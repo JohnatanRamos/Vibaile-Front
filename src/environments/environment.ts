@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  url: 'https://localhost:3000/',
+  url: 'http://localhost:3000/',
   firebase: {
     apiKey: 'AIzaSyCl13vbraDZBCsJO6OFgXmTLIw9sIYDU20',
     authDomain: 'angular-firebase-ee45b.firebaseapp.com',
