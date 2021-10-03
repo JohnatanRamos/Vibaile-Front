@@ -1,11 +1,12 @@
 export interface User {
-  readonly email: string;
-  readonly person: {
-    readonly name: string;
-    readonly lastName: string;
-    readonly phone?: string;
+  email: string;
+  createData: string;
+  person: {
+    name: string;
+    lastName: string;
+    phone?: string;
   };
-  readonly role: {
-    readonly name: string;
+  role: {
+    name: string;
   };
 }

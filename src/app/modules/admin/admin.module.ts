@@ -5,7 +5,6 @@ import { AdminRoutingModule } from './admin.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
 import { MaterialModule } from '../../shared/material/material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [LoginComponent, UserComponent],
@@ -14,7 +13,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-    BrowserAnimationsModule,
   ],
 })
 export class AdminModule {}

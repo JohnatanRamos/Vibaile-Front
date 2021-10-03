@@ -18,8 +18,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 @NgModule({
   declarations: [],
   imports: [
@@ -28,7 +26,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatBadgeModule,
     MatTableModule,
     MatPaginatorModule,
-    BrowserAnimationsModule,
   ],
   exports: [
     MatStepperModule,
