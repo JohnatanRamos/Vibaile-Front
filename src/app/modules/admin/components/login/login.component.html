@@ -1,7 +1,7 @@
 <section>
     <div class="Registro-form">
         <h4 class="title-register">Registrate</h4>
-        <form [formGroup]="form" class="form-register" action="" method="post">
+        <form [formGroup]="form" class="form-register">
             <p *ngIf="message">{{message}}</p>
             <input type="text" formControlName="email" placeholder="Correo" />
             <input type="password" formControlName="password" placeholder="Constraseña" />

@@ -5,14 +5,16 @@ import { AdminRoutingModule } from './admin.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
 import { MaterialModule } from '../../shared/material/material.module';
+import { UserModalComponent } from './components/user/modal/user-modal.component';
 
 @NgModule({
-  declarations: [LoginComponent, UserComponent],
+  declarations: [LoginComponent, UserComponent, UserModalComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
   ],
+  entryComponents: [UserComponent],
 })
 export class AdminModule {}
