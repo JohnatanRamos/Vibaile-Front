@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { zip } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { BaseModalComponent } from 'src/app/core/base/base-modal';
 import { BaseService } from 'src/app/core/base/base.service';
@@ -33,20 +35,33 @@ export class UserComponent extends BaseModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.serviceBase.getAll('user').subscribe((res: User[]) => {
-      this.listEntity = new MatTableDataSource<User>(res);
-      this.listEntity.paginator = this.paginator;
-      // this.totalRecords = this.listEntity.paginator.length;
-    });
+    this.consultUsers();
   }
 
-  modalOpen() {
-    this.openModal(UserModalComponent)
+  modalOpen(item?: User) {
+    if (item) {
+      item.roleId = item.role.id;
+    }
+    this.openModal(UserModalComponent, item)
       .afterClosed()
       .subscribe((res) => {
         if (res) {
           this.ngOnInit();
         }
       });
+  }
+
+  deleteUser(item: User) {
+    this.serviceBase.delete('person', item.person.id).subscribe((res) => {
+      this.consultUsers();
+    });
+  }
+
+  consultUsers() {
+    this.serviceBase.getAll('user').subscribe((res: User[]) => {
+      this.listEntity = new MatTableDataSource<User>(res);
+      this.listEntity.paginator = this.paginator;
+      // this.totalRecords = this.listEntity.paginator.length;
+    });
   }
 }

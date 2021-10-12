@@ -27,9 +27,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatBadgeModule,
     MatTableModule,
     MatPaginatorModule,
+    MatStepperModule,
   ],
   exports: [
-    MatStepperModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
@@ -46,6 +46,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatStepperModule,
   ],
 })
 export class MaterialModule {}

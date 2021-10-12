@@ -15,11 +15,12 @@ export class BaseModalComponent {
     this.modalService.closeAll();
   }
 
-  openModal(modal) {
+  openModal(modal, data = null) {
     const dialogRef = this.modalService.open(modal, {
       height: '500px',
       width: '400px',
       disableClose: true,
+      data: data,
     });
     return dialogRef;
   }

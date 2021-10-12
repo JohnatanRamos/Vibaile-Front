@@ -6,9 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
 import { MaterialModule } from '../../shared/material/material.module';
 import { UserModalComponent } from './components/user/modal/user-modal.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
-  declarations: [LoginComponent, UserComponent, UserModalComponent],
+  declarations: [LoginComponent, UserComponent, UserModalComponent, ProfileComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

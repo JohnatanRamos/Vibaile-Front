@@ -17,4 +17,12 @@ export class BaseService {
   create(method: string, data: any) {
     return this.http.post(this.urlApi + method, data);
   }
+
+  delete(method: string, id: number) {
+    return this.http.delete(this.urlApi + method + '/' + id);
+  }
+
+  update(method: string, id: number, data: any) {
+    return this.http.patch(this.urlApi + method + '/' + id, data);
+  }
 }

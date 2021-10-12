@@ -16,7 +16,7 @@
         </mat-form-field>
     </ng-container>
 
-    <ng-container formGroupName="user">
+    <ng-container>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Correo Electronico</mat-label>
             <input type="email" matInput formControlName="email" placeholder="Ingrese su correo">
@@ -34,6 +34,6 @@
 
     <div class="content-buttons">
         <button mat-raised-button [mat-dialog-close]="false">Cancelar</button>
-        <button mat-raised-button color="warn" (click)="saveUser()">Guardar</button>
+        <button mat-raised-button color="warn" (click)="validateAction()">Guardar</button>
     </div>
 </form>
