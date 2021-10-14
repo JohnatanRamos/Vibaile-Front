@@ -5,7 +5,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { BaseModalComponent } from 'src/app/core/base/base-modal';
+import { BaseComponent } from 'src/app/core/base/base-modal';
 import { BaseService } from 'src/app/core/base/base.service';
 import { User } from '../service/user.object';
 import { UserComponent } from '../user.component';
@@ -15,7 +15,7 @@ import { UserComponent } from '../user.component';
   templateUrl: './user-modal.component.html',
   styleUrls: ['./user-modal.component.scss'],
 })
-export class UserModalComponent extends BaseModalComponent implements OnInit {
+export class UserModalComponent extends BaseComponent implements OnInit {
   form: FormGroup;
   listRole: Array<any>;
 

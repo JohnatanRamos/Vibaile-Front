@@ -15,4 +15,9 @@ export class TokenService {
   getToken() {
     return localStorage.getItem('token');
   }
+
+  // Elimina el token para cerrar la sesion.
+  deleteToken() {
+    return localStorage.removeItem('token');
+  }
 }

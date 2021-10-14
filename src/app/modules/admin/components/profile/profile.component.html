@@ -15,7 +15,7 @@
       <ng-template matStepLabel>Nueva contraseña</ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Nueva contraseña</mat-label>
-        <input type="password" maxlength="40" matInput formControlName="NewPassword"
+        <input type="password" maxlength="40" matInput formControlName="newPassword"
           placeholder="Ingrese su nueva contraseña" required>
       </mat-form-field>
       <!-- <p *ngIf="form.get('NewPassword').dirty && form.get('NewPassword').hasError('required')">Campo minimo de 13
@@ -34,7 +34,7 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Volver</button>
-        <button mat-button [disabled]="form.invalid" (click)="savePassword()">Guardar</button>
+        <button mat-button [disabled]="form.invalid" (click)="confirmChangePassword()">Guardar</button>
         <p>Debe digilenciar todos los campos.</p>
       </div>
     </mat-step>

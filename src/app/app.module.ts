@@ -9,9 +9,11 @@ import { CoreModule } from '../app/core/core.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { LayoutComponent } from './layout/layout.component';
+import { SharedModule } from './shared/components/shared.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LayoutComponent],
   imports: [
     CoreModule,
 
@@ -21,6 +23,7 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
     HttpClientModule,
 
     AdminModule,
+    SharedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

@@ -32,6 +32,10 @@ export class AuthService {
     );
   }
 
+  logout() {
+    this.tokenService.deleteToken();
+  }
+
   getProfile() {
     // Hacemos la peticion y guardariamos la respuesta en "user$"
     return this.http

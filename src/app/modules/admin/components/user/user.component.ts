@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { zip } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { BaseModalComponent } from 'src/app/core/base/base-modal';
+import { BaseComponent } from 'src/app/core/base/base-modal';
 import { BaseService } from 'src/app/core/base/base.service';
 
 import { UserModalComponent } from './modal/user-modal.component';
@@ -16,7 +16,7 @@ import { User } from './service/user.object';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
 })
-export class UserComponent extends BaseModalComponent implements OnInit {
+export class UserComponent extends BaseComponent implements OnInit {
   displayedColumns: string[] = [
     'name',
     'lastName',

@@ -1,7 +1,7 @@
 import { MatDialog } from '@angular/material/dialog';
 import { BaseService } from './base.service';
 
-export class BaseModalComponent {
+export class BaseComponent {
   numberRecords: number;
   page: number;
   totalRecords: number;
