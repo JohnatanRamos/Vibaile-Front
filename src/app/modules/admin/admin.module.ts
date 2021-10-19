@@ -7,9 +7,10 @@ import { UserComponent } from './components/user/user.component';
 import { MaterialModule } from '../../shared/material/material.module';
 import { UserModalComponent } from './components/user/modal/user-modal.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 @NgModule({
-  declarations: [LoginComponent, UserComponent, UserModalComponent, ProfileComponent],
+  declarations: [LoginComponent, UserComponent, UserModalComponent, ProfileComponent, ForgetPasswordComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
