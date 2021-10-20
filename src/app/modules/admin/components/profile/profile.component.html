@@ -1,42 +1,77 @@
-<mat-vertical-stepper #stepper>
-  <form [formGroup]="form">
-    <mat-step>
-      <ng-template matStepLabel>Contraseña actual</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Contraseña</mat-label>
-        <input type="password" maxlength="40" matInput placeholder="Ingrese su contraseña"
-          formControlName="currentPassword" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Nueva contraseña</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Nueva contraseña</mat-label>
-        <input type="password" maxlength="40" matInput formControlName="newPassword"
-          placeholder="Ingrese su nueva contraseña" required>
-      </mat-form-field>
-      <!-- <p *ngIf="form.get('NewPassword').dirty && form.get('NewPassword').hasError('required')">Campo minimo de 13
+<div class="container">
+  <div>
+    <mat-vertical-stepper #stepper>
+      <form [formGroup]="form">
+        <mat-step>
+          <ng-template matStepLabel>Contraseña actual</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input type="password" maxlength="40" matInput placeholder="Ingrese su contraseña"
+              formControlName="currentPassword" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Nueva contraseña</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Nueva contraseña</mat-label>
+            <input type="password" maxlength="40" matInput formControlName="newPassword"
+              placeholder="Ingrese su nueva contraseña" required>
+          </mat-form-field>
+          <!-- <p *ngIf="form.get('NewPassword').dirty && form.get('NewPassword').hasError('required')">Campo minimo de 13
         caracteres</p> -->
-      <div>
-        <button mat-button matStepperPrevious>Volver</button>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Confirmar contraseña</ng-template>
+          <div>
+            <button mat-button matStepperPrevious>Volver</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Confirmar contraseña</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>Confirmar contraseña</mat-label>
+            <input type="password" maxlength="40" matInput formControlName="confirmNewPassword"
+              placeholder="Ingrese su nueva contraseña" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Volver</button>
+            <button mat-button [disabled]="form.invalid" (click)="confirmChangePassword()">Guardar</button>
+            <p>Debe digilenciar todos los campos.</p>
+          </div>
+        </mat-step>
+      </form>
+    </mat-vertical-stepper>
+  </div>
+  <div class="personal-data">
+    <form [formGroup]="formPersonalData">
+      <ng-container formGroupName="person">
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Ingrese su nombre" required formControlName="name">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input matInput placeholder="Ingrese su apellido" required formControlName="lastName">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Telefono</mat-label>
+          <input matInput placeholder="Ingrese su numero de telefono" formControlName="phone">
+          <mat-icon matSuffix>phone</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+      </ng-container>
       <mat-form-field appearance="fill">
-        <mat-label>Confirmar contraseña</mat-label>
-        <input type="password" maxlength="40" matInput formControlName="confirmNewPassword"
-          placeholder="Ingrese su nueva contraseña" required>
+        <mat-label>Correo</mat-label>
+        <input matInput placeholder="Placeholder" readonly formControlName="email">
+        <mat-icon matSuffix>email</mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
       </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Volver</button>
-        <button mat-button [disabled]="form.invalid" (click)="confirmChangePassword()">Guardar</button>
-        <p>Debe digilenciar todos los campos.</p>
-      </div>
-    </mat-step>
-  </form>
-</mat-vertical-stepper>
+      <button mat-stroked-button (click)="updateUser()" [disabled]="formPersonalData.invalid">Guardar</button>
+    </form>
+  </div>
+</div>

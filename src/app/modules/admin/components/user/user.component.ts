@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 
 import { BaseComponent } from 'src/app/core/base/base-modal';
 import { BaseService } from 'src/app/core/base/base.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 import { UserModalComponent } from './modal/user-modal.component';
 import { User } from './service/user.object';
@@ -29,13 +30,19 @@ export class UserComponent extends BaseComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   listEntity: MatTableDataSource<User>;
+  user: User;
 
-  constructor(private serviceBase: BaseService, private modal: MatDialog) {
+  constructor(
+    private serviceBase: BaseService,
+    private modal: MatDialog,
+    private authService: AuthService
+  ) {
     super(modal, serviceBase);
   }
 
   ngOnInit(): void {
     this.consultUsers();
+    this.getUserLogged();
   }
 
   modalOpen(item?: User) {
@@ -52,7 +59,7 @@ export class UserComponent extends BaseComponent implements OnInit {
   }
 
   deleteUser(item: User) {
-    this.serviceBase.delete('person', item.person.id).subscribe((res) => {
+    this.serviceBase.delete('person', item.person.id).subscribe(() => {
       this.consultUsers();
     });
   }
@@ -63,5 +70,14 @@ export class UserComponent extends BaseComponent implements OnInit {
       this.listEntity.paginator = this.paginator;
       // this.totalRecords = this.listEntity.paginator.length;
     });
+  }
+
+  getUserLogged() {
+    setTimeout(() => {
+      // Pedimos el usuario desde "user$", este almacena el usuario
+      this.authService.user$.subscribe((res: User) => {
+        this.user = res;
+      });
+    }, 300);
   }
 }

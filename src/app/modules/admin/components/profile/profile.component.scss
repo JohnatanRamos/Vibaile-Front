@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row-reverse;
+  width: 80%;
+  margin: 25px auto;
+}
+
+.personal-data {
+  margin-top: 20px;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

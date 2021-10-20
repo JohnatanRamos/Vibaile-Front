@@ -4,11 +4,12 @@
     </button>
     <span>{{user?.person?.name}}</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" (click)="logout()"
-        aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-    </button>
+    <a mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon" routerLink="/home/profile"
+        routerLinkActive="active" *ngIf="user">
+        <mat-icon>home</mat-icon>
+    </a>
+    <a mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logout()"
+        *ngIf="user">
+        <mat-icon>exit_to_app</mat-icon>
+    </a>
 </mat-toolbar>

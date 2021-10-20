@@ -12,6 +12,7 @@ import { User } from '../user/service/user.object';
 })
 export class ProfileComponent implements OnInit {
   form: FormGroup;
+  formPersonalData: FormGroup;
   user: User;
 
   constructor(
@@ -21,13 +22,17 @@ export class ProfileComponent implements OnInit {
     private router: Router
   ) {
     this.buildForm();
+    this.buildFormForPersonalData();
   }
 
   ngOnInit() {
     setTimeout(() => {
       // Pedimos el usuario desde "user$", este almacena el usuario
       this.authService.user$.subscribe((res) => {
-        console.log(res), (this.user = res);
+        this.user = res;
+        if (this.user) {
+          this.formPersonalData.patchValue(this.user);
+        }
       });
     }, 300);
   }
@@ -37,6 +42,17 @@ export class ProfileComponent implements OnInit {
       currentPassword: ['', [Validators.required, Validators.minLength(13)]],
       newPassword: ['', [Validators.required, Validators.minLength(13)]],
       confirmNewPassword: ['', [Validators.required, Validators.minLength(13)]],
+    });
+  }
+
+  private buildFormForPersonalData() {
+    this.formPersonalData = this._formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      person: this._formBuilder.group({
+        name: ['', [Validators.required, Validators.maxLength(60)]],
+        lastName: ['', [Validators.required, Validators.maxLength(60)]],
+        phone: ['', [Validators.maxLength(30)]],
+      }),
     });
   }
 
@@ -54,5 +70,13 @@ export class ProfileComponent implements OnInit {
     } else {
       alert('Las contraseñas no coinciden');
     }
+  }
+
+  updateUser() {
+    this.baseService
+      .update('user', this.user.id, this.formPersonalData.value)
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }
