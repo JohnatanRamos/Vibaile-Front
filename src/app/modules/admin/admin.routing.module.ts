@@ -19,7 +19,7 @@ const routes: Routes = [
     component: ProfileComponent,
   },
   {
-    path: 'forgetpassword/:id',
+    path: 'newpassword/:id',
     component: ForgetPasswordComponent,
   },
 ];
