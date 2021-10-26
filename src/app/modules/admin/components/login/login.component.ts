@@ -66,7 +66,7 @@ export class LoginComponent {
           }
         },
         (error) => {
-          this.message = error;
+          this.message = error.error.message;
         }
       );
   }
