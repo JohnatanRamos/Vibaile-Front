@@ -6,11 +6,14 @@
 
                 <p *ngIf="message">{{message}}</p>
                 <input type="text" formControlName="email" placeholder="Correo" />
-                <input type="password" formControlName="password" placeholder="Constraseña" />
-                <a (click)="validateStateLogin()">Olvide mi contraseña</a>
-                <button mat-button color="primary" (click)="login()" [disabled]="form.invalid" class="btn-register"
-                    type="submit">Iniciar
-                    sesión</button>
+
+                <ng-container *ngIf="validEmail">
+                    <input type="password" formControlName="password" placeholder="Constraseña" />
+                    <a (click)="validateStateLogin()">Olvide mi contraseña</a>
+                </ng-container>
+
+                <button mat-button color="primary" (click)="validateAction()" [disabled]="form.invalid"
+                    class="btn-register" type="submit">{{ nameButton }}</button>
             </form>
         </ng-container>
         <ng-container *ngIf="!showLogin">

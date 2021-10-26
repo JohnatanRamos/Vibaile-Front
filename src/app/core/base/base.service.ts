@@ -14,6 +14,10 @@ export class BaseService {
     return this.http.get(this.urlApi + method);
   }
 
+  getAny(method: string, data: any) {
+    return this.http.get(this.urlApi + method + '/' + data);
+  }
+
   create(method: string, data: any) {
     return this.http.post(this.urlApi + method, data);
   }

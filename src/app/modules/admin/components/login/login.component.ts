@@ -8,15 +8,18 @@ import {
 import { Router } from '@angular/router';
 import { BaseService } from 'src/app/core/base/base.service';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { User } from '../user/service/user.object';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   form: FormGroup;
   message: string;
+  nameButton: string;
+  validEmail: boolean;
   showLogin: boolean;
   email = new FormControl('', [Validators.required, Validators.email]);
 
@@ -29,15 +32,43 @@ export class LoginComponent implements OnInit {
     this.buildForm();
     this.message = null;
     this.showLogin = true;
+    this.nameButton = 'Siguiente';
+    this.validEmail = false;
   }
-
-  ngOnInit(): void {}
 
   private buildForm() {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
     });
+  }
+
+  // Valida si se va hacer un logueo o si se va a validar el email.
+  validateAction() {
+    !this.validEmail ? this.validateEmail() : this.login();
+  }
+
+  validateEmail() {
+    this.baseService
+      .getAny('user/validateEmail', this.form.get('email').value)
+      .subscribe(
+        (res: boolean) => {
+          if (!res) {
+            this.message =
+              'Enviamos un email a tu correo donde puedes crear tu contraseña';
+            this.nameButton = 'Reenviar';
+          } else {
+            this.nameButton = 'Iniciar sesion';
+            this.validEmail = true;
+            this.form.addControl(
+              'password',
+              new FormControl('', Validators.required)
+            );
+          }
+        },
+        (error) => {
+          this.message = error;
+        }
+      );
   }
 
   login() {
