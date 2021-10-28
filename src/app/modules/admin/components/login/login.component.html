@@ -1,0 +1,29 @@
+<section>
+    <div class="Registro-form">
+        <ng-container *ngIf="showLogin">
+            <h4 class="title-register">Registrate</h4>
+            <form [formGroup]="form" class="form-register">
+
+                <p *ngIf="message">{{message}}</p>
+                <input type="text" formControlName="email" placeholder="Correo" />
+
+                <ng-container *ngIf="validEmail">
+                    <input type="password" formControlName="password" placeholder="Constraseña" />
+                    <a (click)="validateStateLogin()">Olvide mi contraseña</a>
+                </ng-container>
+
+                <button mat-button color="primary" (click)="validateAction()" [disabled]="form.invalid"
+                    class="btn-register" type="submit">{{ nameButton }}</button>
+            </form>
+        </ng-container>
+        <ng-container *ngIf="!showLogin">
+            <div class="form-register">
+                <input type="text" placeholder="Correo" [formControl]="email" />
+                <button mat-button color="primary" (click)="validateStateLogin()" class="btn-register"
+                    type="submit">Cancelar</button>
+                <button mat-button color="primary" class="btn-register" type="submit" [disabled]="email.invalid"
+                    (click)="sendEmail()">Enviar</button>
+            </div>
+        </ng-container>
+    </div>
+</section>
