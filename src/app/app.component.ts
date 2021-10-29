@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     // De esta manera solo lo pediriamos solo una vez, que seria cuando recargue la pagina.
     const token = this.tokenService.getToken();
     if (token) {
-      console.log(this.authService.getProfile().subscribe());
+      this.authService.getProfile().subscribe();
     }
   }
 }

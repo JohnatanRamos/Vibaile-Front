@@ -75,8 +75,6 @@ export class ProfileComponent implements OnInit {
   updateUser() {
     this.baseService
       .update('user', this.user.id, this.formPersonalData.value)
-      .subscribe((res) => {
-        console.log(res);
-      });
+      .subscribe(() => {});
   }
 }
