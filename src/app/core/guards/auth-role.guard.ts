@@ -6,7 +6,7 @@ import { TokenService } from '../services/auth/token.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AuthRoleGuard implements CanActivate {
   constructor(private tokenService: TokenService, private router: Router) {}
 
   canActivate():
@@ -17,6 +17,11 @@ export class AuthGuard implements CanActivate {
     const token = this.tokenService.getToken();
     if (!token) {
       this.router.navigate(['/login']);
+      return false;
+    }
+    const role = this.tokenService.decodeToken(token);
+    if (role === 'Cliente') {
+      this.router.navigate(['/profile']);
       return false;
     }
     return true;

@@ -20,4 +20,9 @@ export class TokenService {
   deleteToken() {
     return localStorage.removeItem('token');
   }
+
+  // Decofidicar el token
+  decodeToken(token: string) {
+    return JSON.parse(atob(token.split('.')[1])).role;
+  }
 }

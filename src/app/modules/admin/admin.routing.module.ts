@@ -5,27 +5,35 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { AuthRoleGuard } from 'src/app/core/guards/auth-role.guard';
 import { LoginGuard } from 'src/app/core/guards/login.guard';
+import { LayoutComponent } from 'src/app/layout/layout.component';
 
 const routes: Routes = [
   {
-    path: 'login',
-    canActivate: [LoginGuard],
-    component: LoginComponent,
-  },
-  {
-    path: 'user',
-    canActivate: [AuthGuard],
-    component: UserComponent,
-  },
-  {
-    path: 'profile',
-    canActivate: [AuthGuard],
-    component: ProfileComponent,
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: 'user',
+        canActivate: [AuthRoleGuard],
+        component: UserComponent,
+      },
+      {
+        path: 'profile',
+        canActivate: [AuthGuard],
+        component: ProfileComponent,
+      },
+    ],
   },
   {
     path: 'newpassword/:id',
     component: ForgetPasswordComponent,
+  },
+  {
+    path: 'login',
+    canActivate: [LoginGuard],
+    component: LoginComponent,
   },
 ];
 
